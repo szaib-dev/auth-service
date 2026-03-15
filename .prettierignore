@@ -1,0 +1,11 @@
+# Ignore artifacts:
+dist
+node_modules
+package.json
+pnpm-lock.yaml
+.env
+
+**/.git
+**/.svn
+**/.hg
+**/node_modules
