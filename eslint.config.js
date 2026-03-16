@@ -6,9 +6,11 @@ import unusedImports from 'eslint-plugin-unused-imports';
 export default defineConfig([
     {
         files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
-        plugins: { js,
-              '@typescript-eslint': tseslint.plugin,
-             'unused-imports': unusedImports },
+        plugins: {
+            js,
+            '@typescript-eslint': tseslint.plugin,
+            'unused-imports': unusedImports,
+        },
         extends: ['js/recommended'],
         languageOptions: { globals: globals.node },
     },
@@ -17,7 +19,7 @@ export default defineConfig([
         rules: {
             'unused-imports/no-unused-imports': 'error',
             'no-unused-vars': 'off',
-            '@typescript-eslint/no-unused-vars': 'warn'
+            '@typescript-eslint/no-unused-vars': 'warn',
         },
     },
 ]);

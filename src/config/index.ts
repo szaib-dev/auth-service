@@ -7,5 +7,5 @@ const { PORT } = process.env;
 let Config;
 
 export default Config = {
-    PORT
+    PORT,
 };

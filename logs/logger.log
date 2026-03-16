@@ -16,3 +16,15 @@
   level: 'info',
   message: 'Server is running'
 }
+{
+  service: 'auth-service',
+  port: '8000',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '8000',
+  level: 'info',
+  message: 'Server is running'
+}

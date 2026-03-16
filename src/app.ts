@@ -7,9 +7,9 @@ const app: Application = express();
 
 app.use(express.json());
 
-app.get('/check', async(req,res,next)=>{
-  return res.status(200).json("success")
-})
+app.get('/check', async (req, res, next) => {
+    return res.status(200).json('success');
+});
 
 // global error handler
 app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
@@ -20,10 +20,9 @@ app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
             err: error.message,
             errStatus: error.statusCode || 500,
             location: '',
-            path: ''
-        }
-    ]
-    )
+            path: '',
+        },
+    ]);
 });
 
 export default app;
