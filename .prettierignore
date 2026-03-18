@@ -3,7 +3,7 @@ dist
 node_modules
 package.json
 pnpm-lock.yaml
-.env
+.env*
 
 **/.git
 **/.svn

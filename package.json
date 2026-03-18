@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": " nodemon --exec tsx src/server.ts",
+    "dev": "cross-env NODE_ENV=dev nodemon --exec tsx src/server.ts",
+    "prod": "cross-env NODE_ENV=prod tsx src/server.ts",
     "prepare": "husky",
     "lint:check": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -12,6 +13,7 @@
     "pr:check": "prettier . --check",
     "test": "jest",
     "test-w": "jest --watch"
+
   },
   "keywords": [],
   "author": "",
@@ -40,6 +42,7 @@
   },
   "dependencies": {
     "@middy/http-error-handler": "^7.1.7",
+    "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "http-errors": "^2.0.1",
