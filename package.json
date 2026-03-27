@@ -13,8 +13,8 @@
     "pr:check": "prettier . --check",
     "test": "jest",
     "test-w": "jest --watch",
-    "docker:dev": " docker run --rm -it -v \"%cd%:/usr/src/app\" -v auth-service_nodemodules:/usr/src/app/node_modules --env-file \"%cd%/.env.dev\" -p 5500:5501 -e NODE_ENV=dev auth-service:latest   "
-
+    "docker:dev": " docker run --rm -it -v \"%cd%:/usr/src/app\" -v auth-service_nodemodules:/usr/src/app/node_modules --env-file \"%cd%/.env.dev\" -p 5500:5501 -e NODE_ENV=dev auth-service:latest",
+    "docker:db": "docker run --rm --name mernpg-container  -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -v pgmern:/var/lib/postgresql/data -p 5000:5432 -d postgres:17"
   },
   "keywords": [],
   "author": "",
@@ -43,10 +43,13 @@
   },
   "dependencies": {
     "@middy/http-error-handler": "^7.1.7",
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.5.0",
     "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "http-errors": "^2.0.1",
+    "prisma": "^7.5.0",
     "tsx": "^4.21.0",
     "winston": "^3.19.0"
   }
