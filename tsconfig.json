@@ -42,5 +42,5 @@
         "skipLibCheck": true
     },
     "include": ["src"],
-    "exclude": ["jest.config.ts", "jest.config.js"]
+    "exclude": ["jest.config.mjs", "jest.config.js"]
 }

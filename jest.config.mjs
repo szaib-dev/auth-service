@@ -1,6 +1,5 @@
-import type { JestConfigWithTsJest } from 'ts-jest';
-
-const config: JestConfigWithTsJest = {
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+const config = {
     preset: 'ts-jest',
     testEnvironment: 'node',
     transform: {
@@ -12,8 +11,6 @@ const config: JestConfigWithTsJest = {
         ],
     },
     moduleNameMapper: {
-        // tsx requires .js extensions in imports, but ts-jest can't resolve them.
-        // this mapper strips .js at test time so both can coexist without touching imports.
         '^(\\.{1,2}/.*)\\.js$': '$1',
     },
 };
