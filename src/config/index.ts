@@ -10,5 +10,5 @@ let Config;
 
 export default Config = {
     PORT,
-    DATABASE_URL
+    DATABASE_URL,
 };
