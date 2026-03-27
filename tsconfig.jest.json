@@ -3,6 +3,8 @@
     "compilerOptions": {
         "module": "CommonJS",
         "moduleResolution": "node",
-        "esModuleInterop": true // no need to use * as somehting anywhere for tests
+        "esModuleInterop": true, // no need to use * as somehting anywhere for tests
+        "verbatimModuleSyntax": true
+        
     }
 }

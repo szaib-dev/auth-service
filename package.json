@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon --exec tsx src/server.ts",
+    "dev": "cross-env NODE_ENV=dev nodemon -L --exec tsx src/server.ts",
     "prod": "cross-env NODE_ENV=prod tsx src/server.ts",
     "prepare": "husky",
     "lint:check": "eslint .",
@@ -12,7 +12,8 @@
     "pr:fix": "prettier . --write",
     "pr:check": "prettier . --check",
     "test": "jest",
-    "test-w": "jest --watch"
+    "test-w": "jest --watch",
+    "docker:dev": " docker run --rm -it -v \"%cd%:/usr/src/app\" -v auth-service_nodemodules:/usr/src/app/node_modules --env-file \"%cd%/.env.dev\" -p 5500:5501 -e NODE_ENV=dev auth-service:latest   "
 
   },
   "keywords": [],
