@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import prisma from '../config/db.js';
 import bcrypt from 'bcryptjs';
+import { validationResult } from 'express-validator';
 
 export const createUser = async (
     req: Request,
@@ -8,6 +9,14 @@ export const createUser = async (
     next: NextFunction
 ) => {
     try {
+        const validation = validationResult(req);
+        if (!validation.isEmpty()) {
+            return res.status(422).json({
+                status: 'validation error',
+                error: validation.array(),
+            });
+        }
+
         const { fullname, email, password } = req.body;
 
         if (!fullname || !email || !password) {
@@ -16,23 +25,23 @@ export const createUser = async (
             });
         }
 
-        const hashedpassword = await bcrypt.hash(password,10)
+        const hashedpassword = await bcrypt.hash(password, 10);
 
         const user = await prisma.user.create({
             data: {
                 email,
                 fullname,
-                password: hashedpassword
+                password: hashedpassword,
             },
             select: {
                 email: true,
-                fullname: true
-            }
-        })
+                fullname: true,
+            },
+        });
 
         return res.status(201).json({
             message: 'Successfully new user created!',
-            user
+            user,
         });
     } catch (error) {
         next(error);

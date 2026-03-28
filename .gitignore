@@ -4,3 +4,5 @@ dist/
 private/
 pnpm-lock.yaml
 /src/generated/prisma
+logs/
+logger.log
