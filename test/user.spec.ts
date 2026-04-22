@@ -54,7 +54,7 @@ describe('BAD', () => {
             expect(result.statusCode).toBe(422);
         });
 
-        it(`should fullname as empty`, async () => {
+        it(`should have fullname as empty`, async () => {
             const result = await request(app).post('/api/user/register').send({
                 fullname: '',
                 email: 'szaib.dev@gmail.com0',
@@ -63,6 +63,7 @@ describe('BAD', () => {
 
             expect(result.statusCode).toBe(422);
         });
+        
         it(`should email as empty`, async () => {
             const result = await request(app).post('/api/user/register').send({
                 fullname: '',

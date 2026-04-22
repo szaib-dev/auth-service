@@ -6,3 +6,5 @@ pnpm-lock.yaml
 /src/generated/prisma
 logs/
 logger.log
+# pnpm global cache
+.pnpm-store 
