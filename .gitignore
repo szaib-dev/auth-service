@@ -1,6 +1,9 @@
 node_modules/
 dist/
-.env*
+.env
+.env.dev
+.env.prod
+.env.docker
 private/
 pnpm-lock.yaml
 /src/generated/prisma

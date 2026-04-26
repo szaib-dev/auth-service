@@ -76,3 +76,183 @@
     '→ 37 const user = await prisma.user.create(\n' +
     'Unique constraint failed on the fields: (`email`)'
 }
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.user.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\user.ts:38:40\n' +
+    '\n' +
+    '  35 const hashedpassword = await bcrypt.hash(password, 10);\n' +
+    '  36 \n' +
+    '  37 // storing user into database\n' +
+    '→ 38 const user = await prisma.user.create(\n' +
+    'Unique constraint failed on the fields: (`email`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.user.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\user.ts:38:40\n' +
+    '\n' +
+    '  35 const hashedpassword = await bcrypt.hash(password, 10);\n' +
+    '  36 \n' +
+    '  37 // storing user into database\n' +
+    '→ 38 const user = await prisma.user.create(\n' +
+    'Unique constraint failed on the fields: (`email`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.user.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\user.ts:38:40\n' +
+    '\n' +
+    '  35 const hashedpassword = await bcrypt.hash(password, 10);\n' +
+    '  36 \n' +
+    '  37 // storing user into database\n' +
+    '→ 38 const user = await prisma.user.create(\n' +
+    'Unique constraint failed on the fields: (`email`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.user.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\user.ts:38:40\n' +
+    '\n' +
+    '  35 const hashedpassword = await bcrypt.hash(password, 10);\n' +
+    '  36 \n' +
+    '  37 // storing user into database\n' +
+    '→ 38 const user = await prisma.user.create(\n' +
+    'Unique constraint failed on the fields: (`email`)'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'secretOrPrivateKey must be an asymmetric key when using RS256'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.user.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\user.ts:38:40\n' +
+    '\n' +
+    '  35 const hashedpassword = await bcrypt.hash(password, 10);\n' +
+    '  36 \n' +
+    '  37 // storing user into database\n' +
+    '→ 38 const user = await prisma.user.create(\n' +
+    'Unique constraint failed on the fields: (`email`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.user.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\user.ts:38:40\n' +
+    '\n' +
+    '  35 const hashedpassword = await bcrypt.hash(password, 10);\n' +
+    '  36 \n' +
+    '  37 // storing user into database\n' +
+    '→ 38 const user = await prisma.user.create(\n' +
+    'Unique constraint failed on the fields: (`email`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}

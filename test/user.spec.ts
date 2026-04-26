@@ -109,16 +109,14 @@ describe('BAD', () => {
         it('should trim spaces from email before saving', async () => {
             const user = {
                 fullname: 'Shahzaib',
-                email: '  szaiibbb.dev@gmail.com  ',
+                email: '  szaibb.dev@gmail.com  ',
                 password: 'fivewords',
             };
             const result = await request(app)
                 .post('/api/user/register')
                 .send(user);
 
-            console.log(result.statusCode, '----', result.body);
-
-            expect(result.body.user.email).toBe('szaiibbb.dev@gmail.com');
+            expect(result.body.user.email).toBe('szaibb.dev@gmail.com');
 
             // delete after success;
             await prisma.user.delete({
