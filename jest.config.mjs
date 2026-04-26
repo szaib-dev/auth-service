@@ -1,6 +1,6 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const config = {
-     preset: 'ts-jest/presets/default-esm',
+    preset: 'ts-jest/presets/default-esm',
     testEnvironment: 'node',
     transform: {
         '^.+\\.tsx?$': [

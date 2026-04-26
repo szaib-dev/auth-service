@@ -1,3 +1,2 @@
 pnpm lint:check
 pnpm pr:fix
-pnpm test

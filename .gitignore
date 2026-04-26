@@ -8,3 +8,5 @@ logs/
 logger.log
 # pnpm global cache
 .pnpm-store 
+certs/
+logs/
