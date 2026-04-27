@@ -1,12 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-
 import type { NextFunction, Request, Response } from 'express';
 import prisma from '../config/db.js';
 import bcrypt from 'bcryptjs';
 import { validationResult } from 'express-validator';
-import jwt from 'jsonwebtoken';
-import Config from '../config/index.js';
+import { generateAccessToken, generateRefreshToken } from '../services/TokenCreation.js';
 
 export const createUser = async (
     req: Request,
@@ -52,40 +48,11 @@ export const createUser = async (
             sub: user.id,
         };
 
-        // locating private key path
-        const privateKeyPath = path.join(
-            process.cwd(),
-            'certs',
-            'privateKey.pem'
-        );
 
-        // getting private key from path
-        const privateKey = fs.readFileSync(privateKeyPath);
-        if (!privateKey) {
-            next(Error('Private Key Not exist'));
-        }
-
-        // generating acces token with private key and payload
-        const accessToken = jwt.sign(payload, privateKey, {
-            algorithm: 'RS256',
-            issuer: 'auth-service',
-            expiresIn: '1h',
-        });
-
-        // Getting Token Secret for Refresh token
-        const refreshTokenSecret = Config.REFRESH_TOKEN_SECRET;
-
-        if(!refreshTokenSecret){
-            next(Error("refresh token secret is missing"))
-            return 
-        }
-
-        // I am using same payload but you can change if you want!
-        const refreshToken = jwt.sign(payload, refreshTokenSecret, {
-            algorithm: 'HS256',
-            issuer: 'auth-service',
-            expiresIn: '1y',
-        });
+        const accessToken = generateAccessToken(payload);
+        const refreshToken = await generateRefreshToken({...payload, id: user.id})     
+        
+        console.log(refreshToken)
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,

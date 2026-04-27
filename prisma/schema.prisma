@@ -8,10 +8,25 @@ datasource db {
 }
 
 model User {
+  id           String        @id @default(cuid())
+  fullname     String
+  email        String        @unique
+  role         UserRole      @default(USER)
+  password     String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @default(now()) @updatedAt
+  RefreshToken RefreshToken?
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+model RefreshToken {
   id        String   @id @default(cuid())
-  fullname  String
-  email     String   @unique
-  password  String
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  updatedAt DateTime @updatedAt
 }

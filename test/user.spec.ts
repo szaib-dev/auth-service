@@ -37,26 +37,62 @@ describe('Good', () => {
 
         // check is password hashed or not
         it('should save hashed password', async () => {
+
+              // check does user exist
+            const isUserExist = await prisma.user.findUnique({
+                where: {
+                    email: user.email,
+                },
+            });
+
+            if (isUserExist) {
+                // delete if user exist;
+                await prisma.user.delete({
+                    where: {
+                        email: user.email,
+                    },
+                });
+            }
+
+            const response = await request(app)
+                .post('/api/user/register')
+                .send(user);
+
             const isHashedPass = await prisma.user.findUnique({
-                where: { email: user.email },
+                where: { email: response.body.user.email },
                 select: { password: true },
             });
 
             expect(isHashedPass!.password).not.toBe(user.password);
 
-            // delete after success;
-            await prisma.user.delete({
+           
+        });
+
+        it('should return access token and refresh token in cookies', async () => {
+     
+               // check does user exist
+            const isUserExist = await prisma.user.findUnique({
                 where: {
                     email: user.email,
                 },
             });
-        });
 
-        it('should return access token and refresh token in cookies', async () => {
+
+            if (isUserExist) {
+                // delete if user exist;
+                await prisma.user.delete({
+                    where: {
+                        email: user.email,
+                    },
+                });
+            }
+            
+            
             const response = await request(app)
                 .post('/api/user/register')
                 .send(user);
-
+           
+                console.log(response.headers)
             const cookies =
                 (response.headers as unknown as { 'set-cookie': string[] })[
                     'set-cookie'
@@ -79,13 +115,40 @@ describe('Good', () => {
             expect(isJWT(accessToken)).toBe(true);
             expect(isJWT(refreshToken)).toBe(true);
 
-            // delete after success;
-            await prisma.user.delete({
+           
+        });
+
+        it("should check the refresh token in db for user", async()=>{
+
+               // check does user exist
+            const isUserExist = await prisma.user.findUnique({
                 where: {
                     email: user.email,
                 },
             });
-        });
+
+            if (isUserExist) {
+                // delete if user exist;
+                await prisma.user.delete({
+                    where: {
+                        email: user.email,
+                    },
+                });
+            }
+
+            const response =await request(app).post('/api/user/register').send(user);
+            
+             const refreshToken =  await prisma.refreshToken.findUnique({
+                where: {
+                    userId: response.body.user.id
+                }
+            })
+
+            console.log('------refresh token ----', refreshToken)
+
+            expect(refreshToken).not.toBeUndefined()
+            
+        })
 
         // DB CONNECTION CLOSE
         afterAll(async () => {
@@ -107,6 +170,22 @@ describe('BAD', () => {
         });
 
         it('should trim spaces from email before saving', async () => {
+               // check does user exist
+            const isUserExist = await prisma.user.findUnique({
+                where: {
+                    email: "szaibb.dev@gmail.com",
+                },
+            });
+
+            if (isUserExist) {
+                // delete if user exist;
+                await prisma.user.delete({
+                    where: {
+                        email: "szaibb.dev@gmail.com"
+                    },
+                });
+            }
+
             const user = {
                 fullname: 'Shahzaib',
                 email: '  szaibb.dev@gmail.com  ',
@@ -118,12 +197,6 @@ describe('BAD', () => {
 
             expect(result.body.user.email).toBe('szaibb.dev@gmail.com');
 
-            // delete after success;
-            await prisma.user.delete({
-                where: {
-                    email: 'szaiibbb.dev@gmail.com',
-                },
-            });
         });
 
         it(`should have fullname as empty`, async () => {
@@ -145,5 +218,7 @@ describe('BAD', () => {
 
             expect(result.statusCode).toBe(422);
         });
+
+        
     });
 });
