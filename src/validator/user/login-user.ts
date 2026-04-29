@@ -1,11 +1,11 @@
-import { checkSchema } from "express-validator";
+import { checkSchema } from 'express-validator';
 
 const schema = checkSchema({
     email: {
         isEmail: true,
         trim: true,
         errorMessage: 'Invalid Email Format',
-        notEmpty: true
+        notEmpty: true,
     },
 
     password: {
@@ -13,11 +13,10 @@ const schema = checkSchema({
         trim: true,
         isLength: {
             options: {
-                min: 5
-            }
-        }
-    }
-})
+                min: 5,
+            },
+        },
+    },
+});
 
-
-export default schema
+export default schema;

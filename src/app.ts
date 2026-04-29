@@ -8,7 +8,7 @@ import UserRoutes from './routes/user.routes.js';
 import cookieParser from 'cookie-parser';
 
 const app: Application = express();
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(express.json());
 
 app.get('/check', async (req, res, next) => {

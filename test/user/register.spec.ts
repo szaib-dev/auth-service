@@ -136,7 +136,6 @@ describe('Good', () => {
                 },
             });
 
-
             expect(refreshToken).not.toBeUndefined();
         });
 

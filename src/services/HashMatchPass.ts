@@ -1,8 +1,10 @@
-import bcrypt from "bcryptjs"
+import bcrypt from 'bcryptjs';
 
- const hashMatchPass = async(userpassword: string, hashedpassword:string):Promise<boolean>=>{
-      
-   return await bcrypt.compare(userpassword, hashedpassword)
-}
+const hashMatchPass = async (
+    userpassword: string,
+    hashedpassword: string
+): Promise<boolean> => {
+    return await bcrypt.compare(userpassword, hashedpassword);
+};
 
-export default hashMatchPass
+export default hashMatchPass;

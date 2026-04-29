@@ -108,13 +108,13 @@ export const loginUser = async (
             return;
         }
 
-        // check refresh token exist 
+        // check refresh token exist
 
         await prisma.refreshToken.deleteMany({
             where: {
-                userId: user.id
-            }
-        })
+                userId: user.id,
+            },
+        });
         // create payload
         const payload = {
             sub: user.email,
@@ -140,16 +140,19 @@ export const loginUser = async (
     }
 };
 
-
-export const VerifyMyself = async(request: Request, res: Response, next: NextFunction)=>{
+export const VerifyMyself = async (
+    request: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
-        const req = request as authInterface
-        if(!req.auth.sub){
-            return res.status(403).json("No user found")
+        const req = request as authInterface;
+        if (!req.auth.sub) {
+            return res.status(403).json('No user found');
         }
-        return res.status(200).json({id: req.auth.sub})
+        return res.status(200).json({ id: req.auth.sub });
     } catch (error) {
-        next(new Error(error as string))
-        return
+        next(new Error(error as string));
+        return;
     }
-}
+};

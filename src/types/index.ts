@@ -1,7 +1,7 @@
-import type { Request } from "express"
+import type { Request } from 'express';
 
 export interface authInterface extends Request {
-  auth: {
-    sub: string
-  }
+    auth: {
+        sub: string;
+    };
 }
