@@ -4,8 +4,8 @@ import prisma from '../../src/config/db';
 
 describe('/POST create tenant', () => {
     const data = {
-       name: 'Bula',
-       address: 'Bula near karao'
+        name: 'Bula',
+        address: 'Bula near karao',
     };
 
     it('/should return 201 status code', async () => {

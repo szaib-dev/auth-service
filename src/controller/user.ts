@@ -46,11 +46,13 @@ export const createUser = async (
                 email: true,
                 fullname: true,
                 id: true,
+                role: true
             },
         });
         // defining payload.
         const payload = {
             sub: user.id,
+            role: user.role
         };
 
         generateAccessToken(payload, res);
@@ -118,6 +120,7 @@ export const loginUser = async (
         // create payload
         const payload = {
             sub: user.id,
+            role: user.role
         };
 
         // generate and store tokens
@@ -196,6 +199,7 @@ export const refreshTokens = async (
 
         const payload = {
             sub: user.id,
+            role: user.role
         };
 
         //delete existing token
