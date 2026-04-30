@@ -157,58 +157,82 @@ export const VerifyMyself = async (
     }
 };
 
-export const refreshTokens = async(request: Request, res: Response, next:NextFunction)=>{
-
+export const refreshTokens = async (
+    request: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
-       
         const req = request as authInterface;
         const token = await prisma.refreshToken.findUnique({
             where: {
-                id: req.auth.id!
-            }
-        })
+                id: req.auth.id!,
+            },
+        });
 
-        if(!token){
+        if (!token) {
             next(Error('Token is not found in db;'));
             return;
         }
         let user;
 
-        if(token.userId === req.auth.sub){
-             user = await prisma.user.findUnique({
+        if (token.userId === req.auth.sub) {
+            user = await prisma.user.findUnique({
                 where: {
-                    id: token.userId
-                }
-             })
-        }else {
-              next(Error('Token is not valid for this user;'));
+                    id: token.userId,
+                },
+            });
+        } else {
+            next(Error('Token is not valid for this user;'));
             return;
         }
 
-        if(!user){
-             next(Error('User not found with this token '));
-            return res.status(404).json({message: "user not found with this token"});
+        if (!user) {
+            next(Error('User not found with this token '));
+            return res
+                .status(404)
+                .json({ message: 'user not found with this token' });
         }
 
         const payload = {
-            sub: user.id
-        }
+            sub: user.id,
+        };
 
         //delete existing token
         await prisma.refreshToken.delete({
             where: {
-                id: token.id
-             }
-        })
-
+                id: token.id,
+            },
+        });
 
         generateAccessToken(payload, res);
-        await generateRefreshToken({...payload, id: user.id}, res)
+        await generateRefreshToken({ ...payload, id: user.id }, res);
 
-        res.status(200).json({userId: user.id, success:true})
+        res.status(200).json({ userId: user.id, success: true });
     } catch (error) {
         next(error);
         return;
     }
+};
 
+
+export const logoutUser = async(request:Request, res:Response, next: NextFunction)=>{
+    try {
+        const req = request as authInterface;
+        // delete token from db
+        await prisma.refreshToken.delete({
+            where: {
+                id: req.auth.id!
+            }
+        })
+
+        // clear cookies 
+        res.clearCookie("accessToken")
+        res.clearCookie("refreshToken")
+
+        return res.status(200).json({success: true})
+    } catch (error) {
+        next(Error(error as string));
+        return
+    }
 }

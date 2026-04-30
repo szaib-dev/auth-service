@@ -19,9 +19,9 @@ In [src/services/TokenCreation.ts](C:/Users/szb84/OneDrive/Desktop/Github%20Proj
 
 ```ts
 const newPayload = {
-  sub: payload.sub,
-  id: token.id
-}
+    sub: payload.sub,
+    id: token.id,
+};
 ```
 
 This is the important fix.
@@ -38,7 +38,7 @@ That matches what your middleware expects.
 In [src/middleware/tokenValidation.ts](C:/Users/szb84/OneDrive/Desktop/Github%20Projects/coder-gyan/auth-service/src/middleware/tokenValidation.ts:16), the middleware checks:
 
 ```ts
-id: (token?.payload as { id: string }).id
+id: (token?.payload as { id: string }).id;
 ```
 
 That now works because the refresh JWT `id` is the actual `RefreshToken.id`.
@@ -49,7 +49,7 @@ In [src/controller/user.ts](C:/Users/szb84/OneDrive/Desktop/Github%20Projects/co
 
 ```ts
 const payload = {
-  sub: user.id,
+    sub: user.id,
 };
 ```
 
@@ -72,7 +72,7 @@ The remaining issue is the test, not the route.
 In [test/user/refresh-token.spec.ts](C:/Users/szb84/OneDrive/Desktop/Github%20Projects/coder-gyan/auth-service/test/user/refresh-token.spec.ts:13), the test calls:
 
 ```ts
-POST /api/user/refresh-tokens
+POST / api / user / refresh - tokens;
 ```
 
 without first:
@@ -106,18 +106,18 @@ Use this flow:
 
 ```ts
 const registerResponse = await request(app)
-  .post('/api/user/register')
-  .send(user);
+    .post('/api/user/register')
+    .send(user);
 
 const cookies =
-  (registerResponse.headers as unknown as { 'set-cookie': string[] })[
-    'set-cookie'
-  ] ?? [];
+    (registerResponse.headers as unknown as { 'set-cookie': string[] })[
+        'set-cookie'
+    ] ?? [];
 
 const refreshResponse = await request(app)
-  .post('/api/user/refresh-tokens')
-  .set('Cookie', cookies)
-  .send();
+    .post('/api/user/refresh-tokens')
+    .set('Cookie', cookies)
+    .send();
 
 expect(refreshResponse.statusCode).toBe(200);
 expect(refreshResponse.body.success).toBe(true);

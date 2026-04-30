@@ -49,8 +49,8 @@ export const generateRefreshToken = async (
 
     const newPayload = {
         sub: payload.sub,
-        id: token.id
-    }
+        id: token.id,
+    };
 
     const refreshToken = jwt.sign(newPayload, refreshTokenSecret, {
         algorithm: 'HS256',

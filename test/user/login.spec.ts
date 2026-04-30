@@ -39,7 +39,6 @@ describe('/ Login a User', () => {
                 .post('/api/user/login')
                 .send(user);
 
-             
             expect(response.body.user.email).toBe(user.email);
         });
 
