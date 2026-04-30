@@ -215,24 +215,27 @@ export const refreshTokens = async (
     }
 };
 
-
-export const logoutUser = async(request:Request, res:Response, next: NextFunction)=>{
+export const logoutUser = async (
+    request: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
         const req = request as authInterface;
         // delete token from db
         await prisma.refreshToken.delete({
             where: {
-                id: req.auth.id!
-            }
-        })
+                id: req.auth.id!,
+            },
+        });
 
-        // clear cookies 
-        res.clearCookie("accessToken")
-        res.clearCookie("refreshToken")
+        // clear cookies
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
 
-        return res.status(200).json({success: true})
+        return res.status(200).json({ success: true });
     } catch (error) {
         next(Error(error as string));
-        return
+        return;
     }
-}
+};

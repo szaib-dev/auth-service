@@ -9,6 +9,7 @@ datasource db {
 
 model User {
   id           String        @id @default(cuid())
+  tenantId     String
   fullname     String
   email        String        @unique
   role         UserRole      @default(USER)
@@ -20,6 +21,7 @@ model User {
 
 enum UserRole {
   ADMIN
+  MANAGER
   USER
 }
 
@@ -30,3 +32,10 @@ model RefreshToken {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Resturants {
+  id        String   @id @default(cuid())
+  name      String 
+  address   String   @unique
+}
+

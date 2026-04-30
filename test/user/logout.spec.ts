@@ -10,9 +10,7 @@ describe('/ Logout Test', () => {
     };
 
     it('/should return 200 status code', async () => {
-        const response = await request(app)
-            .post('/api/user/logout')
-            .send();
+        const response = await request(app).post('/api/user/logout').send();
 
         expect(response.statusCode).toBe(200);
     });
