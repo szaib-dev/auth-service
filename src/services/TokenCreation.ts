@@ -41,13 +41,18 @@ export const generateRefreshToken = async (
         throw new Error('refresh token secret is missing');
     }
     // create refresh token details in db
-    await prisma.refreshToken.create({
+    const token = await prisma.refreshToken.create({
         data: {
             userId: payload.id,
         },
     });
 
-    const refreshToken = jwt.sign(payload, refreshTokenSecret, {
+    const newPayload = {
+        sub: payload.sub,
+        id: token.id
+    }
+
+    const refreshToken = jwt.sign(newPayload, refreshTokenSecret, {
         algorithm: 'HS256',
         issuer: 'auth-service',
         expiresIn: '1y',

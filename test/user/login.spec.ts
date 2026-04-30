@@ -31,7 +31,6 @@ describe('/ Login a User', () => {
             const response = await request(app)
                 .post('/api/user/login')
                 .send(user);
-
             expect(response.statusCode).toBe(200);
         });
 
@@ -40,6 +39,7 @@ describe('/ Login a User', () => {
                 .post('/api/user/login')
                 .send(user);
 
+             
             expect(response.body.user.email).toBe(user.email);
         });
 

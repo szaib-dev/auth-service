@@ -103,7 +103,7 @@ export const loginUser = async (
         // match password
         const passwordCheck = await hashMatchPass(password, user.password);
 
-        if (passwordCheck === false) {
+        if (!passwordCheck) {
             next(Error('Email or Password not Valid'));
             return;
         }
@@ -117,7 +117,7 @@ export const loginUser = async (
         });
         // create payload
         const payload = {
-            sub: user.email,
+            sub: user.id,
         };
 
         // generate and store tokens
@@ -156,3 +156,59 @@ export const VerifyMyself = async (
         return;
     }
 };
+
+export const refreshTokens = async(request: Request, res: Response, next:NextFunction)=>{
+
+    try {
+       
+        const req = request as authInterface;
+        const token = await prisma.refreshToken.findUnique({
+            where: {
+                id: req.auth.id!
+            }
+        })
+
+        if(!token){
+            next(Error('Token is not found in db;'));
+            return;
+        }
+        let user;
+
+        if(token.userId === req.auth.sub){
+             user = await prisma.user.findUnique({
+                where: {
+                    id: token.userId
+                }
+             })
+        }else {
+              next(Error('Token is not valid for this user;'));
+            return;
+        }
+
+        if(!user){
+             next(Error('User not found with this token '));
+            return res.status(404).json({message: "user not found with this token"});
+        }
+
+        const payload = {
+            sub: user.id
+        }
+
+        //delete existing token
+        await prisma.refreshToken.delete({
+            where: {
+                id: token.id
+             }
+        })
+
+
+        generateAccessToken(payload, res);
+        await generateRefreshToken({...payload, id: user.id}, res)
+
+        res.status(200).json({userId: user.id, success:true})
+    } catch (error) {
+        next(error);
+        return;
+    }
+
+}
