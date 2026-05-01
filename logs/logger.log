@@ -1047,3 +1047,267 @@
   level: 'info',
   message: 'Server is running'
 }
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'Tenant Id is missing'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'Tenant Id is missing'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'Tenant Id is missing'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}

@@ -1,24 +1,22 @@
 import request from 'supertest';
 import app from '../../src/app';
 import prisma from '../../src/config/db';
+import jwt from 'jsonwebtoken';
+import config from '../../src/config';
 import createJWKSMock from 'mock-jwks';
 import { UserRole } from '../../src/generated/prisma/enums';
 
-describe('/POST create new tenants', () => {
+describe('/DELETE tenant with id', () => {
     const data = {
         fullname: 'Ali',
-        email: 'alssssss23sdsssi@gmail.com',
+        email: 'alp@gmail.com',
         password: 'usernameali',
         role: UserRole.ADMIN,
     };
 
-    const tenant = {
-        name: 'My First Tenant',
-        address: 'This is my first address',
-    };
 
     let jwk: ReturnType<typeof createJWKSMock>;
-
+                                                                                                                           
     beforeAll(() => {
         jwk = createJWKSMock('http://localhost:5501');
     });
@@ -31,7 +29,8 @@ describe('/POST create new tenants', () => {
         jwk.stop();
     });
 
-    it('should return 201 status code', async () => {
+    it('it should return 200 status code', async () => {
+
         let user = await prisma.user.findUnique({
             where: {
                 email: data.email,
@@ -44,17 +43,23 @@ describe('/POST create new tenants', () => {
             });
         }
 
+        const tenant = await prisma.resturants.create({
+            data: {
+                name : 'name', address: 'address'
+            }
+        })
+
         const accessTokenSignature = jwk.token({
             sub: user.id,
             role: user.role,
         });
 
         const response = await request(app)
-            .post('/api/tenant/create')
+            .delete(`/api/tenant/delete/${tenant.id}`)
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
-            .send(tenant);
+            .send();
 
-
-        expect(response.statusCode).toBe(201);
+        expect(response.statusCode).toBe(200);
     });
+
 });
