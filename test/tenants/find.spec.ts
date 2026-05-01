@@ -1,8 +1,6 @@
 import request from 'supertest';
 import app from '../../src/app';
 import prisma from '../../src/config/db';
-import jwt from 'jsonwebtoken';
-import config from '../../src/config';
 import createJWKSMock from 'mock-jwks';
 import { UserRole } from '../../src/generated/prisma/enums';
 

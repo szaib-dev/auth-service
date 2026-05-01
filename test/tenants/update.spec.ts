@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import config from '../../src/config';
 import createJWKSMock from 'mock-jwks';
 import { UserRole } from '../../src/generated/prisma/enums';
+import { updateTenant } from '../../src/controller/tenant';
 
 describe('/PATCH update tenant with id', () => {
     const data = {
@@ -13,8 +14,6 @@ describe('/PATCH update tenant with id', () => {
         password: 'usernameali',
         role: UserRole.ADMIN,
     };
-
-    const tenantId = 'cmomw6v2r0000t8vt6sjoq3mq';
 
     let jwk: ReturnType<typeof createJWKSMock>;
 
@@ -47,17 +46,27 @@ describe('/PATCH update tenant with id', () => {
             });
         }
 
+        const tenant = await prisma.resturants.create({
+            data: {
+               name: updateTenant.name,
+               address: 'address'
+            }
+        })
+
         const accessTokenSignature = jwk.token({
             sub: user.id,
             role: user.role,
         });
 
         const response = await request(app)
-            .patch(`/api/tenant/update/${tenantId}`)
+            .patch(`/api/tenant/update/${tenant.id}`)
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
             .send(tenantUpdate);
 
         expect(response.statusCode).toBe(200);
+
+        // delete tenant after update
+        await prisma.resturants.delete({where: {id: tenant.id}})
     });
 
     it('should return updated name of tenant', async () => {
@@ -77,16 +86,27 @@ describe('/PATCH update tenant with id', () => {
             });
         }
 
+          const tenant = await prisma.resturants.create({
+            data: {
+               name: updateTenant.name,
+               address: 'address'
+            }
+        })
+
         const accessTokenSignature = jwk.token({
             sub: user.id,
             role: user.role,
         });
 
         const response = await request(app)
-            .patch(`/api/tenant/update/${tenantId}`)
+            .patch(`/api/tenant/update/${tenant.id}`)
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
             .send(tenantUpdate);
 
         expect(response.body.tenant.name).toBe(tenantUpdate.name);
+       
+        // delte after update
+        await prisma.resturants.delete({where: {id: tenant.id}})
+
     });
 });
