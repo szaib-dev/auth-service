@@ -3,7 +3,7 @@ import type { Request } from 'express';
 export interface authInterface extends Request {
     auth: {
         sub: string;
-        role: string
+        role: string;
         id?: string;
     };
 }

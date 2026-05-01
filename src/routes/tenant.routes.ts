@@ -7,7 +7,11 @@ import { UserRole } from '../generated/prisma/enums.js';
 
 const route: Router = express.Router();
 
-route.post('/create',authentication, WhoCanAccess([UserRole.ADMIN]), createTenant);
-
+route.post(
+    '/create',
+    authentication,
+    WhoCanAccess([UserRole.ADMIN]),
+    createTenant
+);
 
 export default route;

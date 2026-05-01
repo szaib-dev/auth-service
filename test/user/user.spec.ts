@@ -3,7 +3,7 @@ import app from '../../src/app';
 import prisma from '../../src/config/db';
 import createJWKSMock from 'mock-jwks';
 
-describe('/ Get User', () => {
+describe('/GET User', () => {
     let jwks: ReturnType<typeof createJWKSMock>;
     const data = {
         fullname: 'Ali',

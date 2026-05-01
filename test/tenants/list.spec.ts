@@ -9,7 +9,7 @@ import { UserRole } from '../../src/generated/prisma/enums';
 describe('/POST create new tenants', () => {
     const data = {
         fullname: 'Ali',
-        email: 'alssssss23sdsssi@gmail.com',
+        email: 'alp@gmail.com',
         password: 'usernameali',
         role: UserRole.ADMIN
     };
@@ -33,7 +33,7 @@ describe('/POST create new tenants', () => {
          jwk.stop();
     });
 
-    it('should return 201 status code', async () => {
+    it('should return 200 status code and logout user', async () => {
         let user = await prisma.user.findUnique({
             where: {
                 email: data.email,

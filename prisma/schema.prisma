@@ -36,6 +36,6 @@ model RefreshToken {
 model Resturants {
   id        String   @id @default(cuid())
   name      String 
-  address   String   @unique
+  address   String  
 }
 

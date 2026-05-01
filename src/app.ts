@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 
 // import routes
 import UserRoutes from './routes/user.routes.js';
-import TenantRoutes from "./routes/tenant.routes.js"
+import TenantRoutes from './routes/tenant.routes.js';
 
 const app: Application = express();
 app.use(cookieParser());
@@ -17,7 +17,7 @@ app.get('/check', async (req, res, next) => {
 });
 
 app.use('/api/user', UserRoutes);
-app.use('/api/tenant', TenantRoutes)
+app.use('/api/tenant', TenantRoutes);
 
 // global error handler
 app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {

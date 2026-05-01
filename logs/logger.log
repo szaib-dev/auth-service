@@ -419,3 +419,583 @@
   level: 'info',
   message: 'Server is running'
 }
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'The token has been revoked.'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.refreshToken.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\services\\TokenCreation.ts:44:45\n' +
+    '\n' +
+    "  41     throw new Error('refresh token secret is missing');\n" +
+    '  42 }\n' +
+    '  43 // create refresh token details in db\n' +
+    '→ 44 const token = await prisma.refreshToken.create(\n' +
+    'Foreign key constraint violated on the constraint: `RefreshToken_userId_fkey`'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: 'No authorization token was found'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.resturants.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\tenant.ts:16:48\n' +
+    '\n' +
+    '  13     return;\n' +
+    '  14 }\n' +
+    '  15 \n' +
+    '→ 16 const tenant = await prisma.resturants.create(\n' +
+    'Unique constraint failed on the fields: (`address`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.resturants.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\tenant.ts:16:48\n' +
+    '\n' +
+    '  13     return;\n' +
+    '  14 }\n' +
+    '  15 \n' +
+    '→ 16 const tenant = await prisma.resturants.create(\n' +
+    'Unique constraint failed on the fields: (`address`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.resturants.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\tenant.ts:16:48\n' +
+    '\n' +
+    '  13     return;\n' +
+    '  14 }\n' +
+    '  15 \n' +
+    '→ 16 const tenant = await prisma.resturants.create(\n' +
+    'Unique constraint failed on the fields: (`address`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 500,
+  level: 'error',
+  message: '\n' +
+    'Invalid `prisma.resturants.create()` invocation in\n' +
+    'C:\\Users\\szb84\\OneDrive\\Desktop\\Github Projects\\coder-gyan\\auth-service\\src\\controller\\tenant.ts:16:48\n' +
+    '\n' +
+    '  13     return;\n' +
+    '  14 }\n' +
+    '  15 \n' +
+    '→ 16 const tenant = await prisma.resturants.create(\n' +
+    'Unique constraint failed on the fields: (`address`)'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
