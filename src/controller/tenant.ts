@@ -47,46 +47,45 @@ export const tenantsList = async (
     }
 };
 
-
 export const updateTenant = async (
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        const { tenantId } = req.params as { tenantId: string }
-        const {name, address} = req.body
+        const { tenantId } = req.params as { tenantId: string };
+        const { name, address } = req.body;
 
-        if(!name && !address){
-            next(createHttpError(400, 'Nothing to update'))
+        if (!name && !address) {
+            next(createHttpError(400, 'Nothing to update'));
             return;
         }
 
-        if(!tenantId){
-            next(createHttpError(400, 'Tenant Id is missing'))
+        if (!tenantId) {
+            next(createHttpError(400, 'Tenant Id is missing'));
             return;
         }
 
         const tenant = await prisma.resturants.findUnique({
             where: {
-                id: tenantId
-            }
-        })
+                id: tenantId,
+            },
+        });
 
-        if(!tenant){
-            next(createHttpError(402, 'There is no tenant found with this id'))
+        if (!tenant) {
+            next(createHttpError(402, 'There is no tenant found with this id'));
             return;
         }
 
         // update tenant
 
         const updatedTenant = await prisma.resturants.update({
-            where: {id: tenantId},
+            where: { id: tenantId },
             data: {
-                name, 
-                address
-            }
-        })
+                name,
+                address,
+            },
+        });
 
         res.status(200).json({ tenant: updatedTenant });
     } catch (error) {
@@ -100,29 +99,59 @@ export const deleteTenant = async (
     next: NextFunction
 ) => {
     try {
-        const { tenantId } = req.params as { tenantId: string }
+        const { tenantId } = req.params as { tenantId: string };
 
-        if(!tenantId){
-            next(createHttpError(400, 'Tenant Id is missing'))
+        if (!tenantId) {
+            next(createHttpError(400, 'Tenant Id is missing'));
             return;
         }
 
         const tenant = await prisma.resturants.findUnique({
             where: {
-                id: tenantId
-            }
-        })
+                id: tenantId,
+            },
+        });
 
-        if(!tenant){
-            next(createHttpError(402, 'There is no tenant found with this id'))
+        if (!tenant) {
+            next(createHttpError(402, 'There is no tenant found with this id'));
             return;
         }
 
         // delete tenant
 
-        await prisma.resturants.delete({  where: {id: tenantId},        })
+        await prisma.resturants.delete({ where: { id: tenantId } });
 
-        res.status(200).json({ tenant: tenant.id , success: true});
+        res.status(200).json({ tenant: tenant.id, success: true });
+    } catch (error) {
+        next(error);
+        return;
+    }
+};
+export const findTenant = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { tenantId } = req.params as { tenantId: string };
+
+        if (!tenantId) {
+            next(createHttpError(400, 'Tenant Id is missing'));
+            return;
+        }
+
+        const tenant = await prisma.resturants.findUnique({
+            where: {
+                id: tenantId,
+            },
+        });
+
+        if (!tenant) {
+            next(createHttpError(402, 'There is no tenant found with this id'));
+            return;
+        }
+
+        res.status(200).json({ tenant, success: true });
     } catch (error) {
         next(error);
         return;

@@ -1,6 +1,12 @@
 import type { Router } from 'express';
 import express from 'express';
-import { createTenant, deleteTenant, tenantsList, updateTenant } from '../controller/tenant.js';
+import {
+    createTenant,
+    deleteTenant,
+    findTenant,
+    tenantsList,
+    updateTenant,
+} from '../controller/tenant.js';
 import authentication from '../middleware/authentication.js';
 import WhoCanAccess from '../services/WhoCanAccess.js';
 import { UserRole } from '../generated/prisma/enums.js';
@@ -17,7 +23,24 @@ route.post(
     createTenant
 );
 route.get('/list', authentication, WhoCanAccess([UserRole.ADMIN]), tenantsList);
-route.patch('/update/:tenantId', authentication, WhoCanAccess([UserRole.ADMIN]),tenantUpdateValidation, updateTenant);
-route.delete('/delete/:tenantId', authentication, WhoCanAccess([UserRole.ADMIN]), deleteTenant);
+route.patch(
+    '/update/:tenantId',
+    authentication,
+    WhoCanAccess([UserRole.ADMIN]),
+    tenantUpdateValidation,
+    updateTenant
+);
+route.delete(
+    '/delete/:tenantId',
+    authentication,
+    WhoCanAccess([UserRole.ADMIN]),
+    deleteTenant
+);
+route.get(
+    '/find/:tenantId',
+    authentication,
+    WhoCanAccess([UserRole.ADMIN]),
+    findTenant
+);
 
 export default route;

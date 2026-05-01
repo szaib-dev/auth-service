@@ -87,7 +87,6 @@ describe('/PATCH update tenant with id', () => {
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
             .send(tenantUpdate);
 
-
         expect(response.body.tenant.name).toBe(tenantUpdate.name);
     });
 });

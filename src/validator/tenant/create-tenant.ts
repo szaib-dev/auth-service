@@ -1,4 +1,4 @@
-import { checkSchema } from "express-validator";
+import { checkSchema } from 'express-validator';
 
 const tenantRegisterValidation = checkSchema({
     name: {
@@ -8,19 +8,18 @@ const tenantRegisterValidation = checkSchema({
             options: {
                 min: 3,
             },
-            errorMessage: 'Min length for name is 3'
-        }
+            errorMessage: 'Min length for name is 3',
+        },
     },
     address: {
         isLength: {
             options: {
-                min: 6
+                min: 6,
             },
-             errorMessage: 'Min length for name is 3'
+            errorMessage: 'Min length for name is 3',
         },
-        trim: true
-    }
-})
+        trim: true,
+    },
+});
 
-
-export default tenantRegisterValidation
+export default tenantRegisterValidation;

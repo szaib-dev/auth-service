@@ -6,7 +6,7 @@ import config from '../../src/config';
 import createJWKSMock from 'mock-jwks';
 import { UserRole } from '../../src/generated/prisma/enums';
 
-describe('/DELETE tenant with id', () => {
+describe('/GET specific tenant with id', () => {
     const data = {
         fullname: 'Ali',
         email: 'alp@gmail.com',
@@ -54,10 +54,17 @@ describe('/DELETE tenant with id', () => {
         });
 
         const response = await request(app)
-            .delete(`/api/tenant/delete/${tenant.id}`)
+            .get(`/api/tenant/find/${tenant.id}`)
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
             .send();
 
         expect(response.statusCode).toBe(200);
+
+        // delete
+        await prisma.resturants.delete({
+            where: {
+                id: tenant.id,
+            },
+        });
     });
 });

@@ -54,7 +54,6 @@ describe('/POST create new tenants', () => {
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
             .send(tenant);
 
-
         expect(response.statusCode).toBe(201);
     });
 });
