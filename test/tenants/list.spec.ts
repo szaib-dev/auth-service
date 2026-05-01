@@ -6,18 +6,13 @@ import config from '../../src/config';
 import createJWKSMock from 'mock-jwks';
 import { UserRole } from '../../src/generated/prisma/enums';
 
-describe('/POST create new tenants', () => {
+describe('/GET list of tenants', () => {
     const data = {
         fullname: 'Ali',
         email: 'alp@gmail.com',
         password: 'usernameali',
-        role: UserRole.ADMIN
+        role: UserRole.ADMIN,
     };
-
-    const tenant = {
-        name: 'My First Tenant',
-        address: 'This is my first address'
-    }
 
     let jwk: ReturnType<typeof createJWKSMock>;
 
@@ -26,14 +21,14 @@ describe('/POST create new tenants', () => {
     });
 
     beforeEach(async () => {
-         jwk.start();
+        jwk.start();
     });
 
     afterEach(async () => {
-         jwk.stop();
+        jwk.stop();
     });
 
-    it('should return 200 status code and logout user', async () => {
+    it('should return 200 status code', async () => {
         let user = await prisma.user.findUnique({
             where: {
                 email: data.email,
@@ -45,22 +40,18 @@ describe('/POST create new tenants', () => {
                 data,
             });
         }
-      
 
         const accessTokenSignature = jwk.token({
             sub: user.id,
             role: user.role,
         });
 
-
         const response = await request(app)
-            .post('/api/tenant/create')
-            .set('Cookie', [
-                `accessToken=${accessTokenSignature}`]).send(tenant);
+            .get('/api/tenant/list')
+            .set('Cookie', [`accessToken=${accessTokenSignature}`])
+            .send();
 
 
-                console.log("==========response========", response.body)
-
-        expect(response.statusCode).toBe(201);
+        expect(response.statusCode).toBe(200);
     });
 });

@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import prisma from '../config/db.js';
+import createHttpError from 'http-errors';
 
 export const createTenant = async (
     req: Request,
@@ -26,3 +27,20 @@ export const createTenant = async (
         return;
     }
 };
+
+
+
+export const tenantsList = async(req:Request, res:Response, next: NextFunction)=>{
+    try {
+        const list = await prisma.resturants.findMany({});
+
+        if(!list){
+            next(createHttpError(404, 'There is no list found under tenants'))
+        }
+
+        res.status(200).json({list})
+    } catch (error) {
+        next(error)
+        return
+    }
+}
