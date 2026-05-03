@@ -3,15 +3,20 @@ import app from '../../src/app';
 import prisma from '../../src/config/db';
 import createJWKSMock from 'mock-jwks';
 import { UserRole } from '../../src/generated/prisma/enums';
-import { updateTenant } from '../../src/controller/tenant';
 
-describe('/PATCH update tenant with id', () => {
+describe('/POST create new members by admin only', () => {
     const data = {
         fullname: 'Ali',
-        email: 'alp@gmail.com',
+        email: 'alsssofsdssi@gmail.com',
         password: 'usernameali',
         role: UserRole.ADMIN,
     };
+
+    const member = {
+        fullname: 'Shhazaib',
+        email: 'wehjfdfedj@gmail.com',
+        password: '239ud9husdf'
+    }
 
     let jwk: ReturnType<typeof createJWKSMock>;
 
@@ -21,17 +26,18 @@ describe('/PATCH update tenant with id', () => {
 
     beforeEach(async () => {
         jwk.start();
+        await prisma.user.deleteMany({
+            where: {
+                email: member.email
+            }
+        })
     });
 
     afterEach(async () => {
         jwk.stop();
     });
 
-    it('should return 200 status code', async () => {
-        const tenantUpdate = {
-            name: 'Pola125',
-        };
-
+    it('should return 201 status code', async () => {
         let user = await prisma.user.findUnique({
             where: {
                 email: data.email,
@@ -44,34 +50,21 @@ describe('/PATCH update tenant with id', () => {
             });
         }
 
-        const tenant = await prisma.resturants.create({
-            data: {
-                name: updateTenant.name,
-                address: 'address',
-            },
-        });
-
         const accessTokenSignature = jwk.token({
             sub: user.id,
             role: user.role,
         });
 
         const response = await request(app)
-            .patch(`/api/tenant/update/${tenant.id}`)
+            .post('/api/member/create')
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
-            .send(tenantUpdate);
+            .send(member);
 
-        expect(response.statusCode).toBe(200);
-
-        // delete tenant after update
-        await prisma.resturants.delete({ where: { id: tenant.id } });
+        expect(response.statusCode).toBe(201);
     });
 
-    it('should return updated name of tenant', async () => {
-        const tenantUpdate = {
-            name: 'YingYong',
-        };
 
+    it('should create manager only', async () => {
         let user = await prisma.user.findUnique({
             where: {
                 email: data.email,
@@ -84,26 +77,16 @@ describe('/PATCH update tenant with id', () => {
             });
         }
 
-        const tenant = await prisma.resturants.create({
-            data: {
-                name: updateTenant.name,
-                address: 'address',
-            },
-        });
-
         const accessTokenSignature = jwk.token({
             sub: user.id,
             role: user.role,
         });
 
         const response = await request(app)
-            .patch(`/api/tenant/update/${tenant.id}`)
+            .post('/api/member/create')
             .set('Cookie', [`accessToken=${accessTokenSignature}`])
-            .send(tenantUpdate);
+            .send(member);
 
-        expect(response.body.tenant.name).toBe(tenantUpdate.name);
-
-        // delte after update
-        await prisma.resturants.delete({ where: { id: tenant.id } });
+        expect(response.body.member.role).toBe('MANAGER');
     });
 });
