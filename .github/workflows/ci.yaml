@@ -27,7 +27,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-       
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,11 +37,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Prisma client
+        run: pnpm prisma generate
+
       - name: Run ESLint
         run: pnpm lint:check
 
       - name: Run Jest tests
-        run: pnpm test -- --runInBand
+        run: pnpm test
 
       - name: Create build
         run: pnpm build
@@ -52,6 +54,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-     
-       

@@ -10,3 +10,5 @@ pnpm-lock.yaml
 **/.hg
 **/node_modules
 prisma.config.ts
+.github/
+**/workflows
