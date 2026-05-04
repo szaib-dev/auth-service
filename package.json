@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "pr:fix": "prettier . --write",
     "pr:check": "prettier . --check",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=dev jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_ENV=dev jest  --runInBand --testTimeout=30000",
     "test-w": "cross-env NODE_OPTIONS=--experimental-vm-modules  NODE_ENV=dev   jest --watch",
     "docker:dev": "docker run --rm -it -v \"%cd%:/usr/src/app\" -v auth-service_nodemodules:/usr/src/app/node_modules --env-file \"%cd%/.env.docker\" --network coder-gyan-network -p 5500:5501 -e NODE_ENV=dev auth-service:latest",
     "docker:db": "docker run --rm --name mernpg-container -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -v pgmern:/var/lib/postgresql/data --network coder-gyan-network -p 5000:5432 -d postgres:17"
