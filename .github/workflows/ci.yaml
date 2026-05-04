@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-and-build:
+    name: Test and Build
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_ENV: dev
+      DATABASE_URL: postgresql://postgres:${{ secrets.DB_PASS }}@${{ secrets.DB_PROJECT_URL }}:${{ secrets.DB_PROJECT_PORT }}/postgres
+      REFRESH_TOKEN_SECRET: ${{ secrets.REFRESH_TOKEN_SECRET }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      JWKS_URI: ${{ secrets.JWKS_URI }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run ESLint
+        run: pnpm lint:check
+
+      - name: Run Jest tests
+        run: pnpm test -- --runInBand
+
+      - name: Create build
+        run: pnpm build
+
+      - name: Sonar Cloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+     
+       
