@@ -64,7 +64,7 @@ describe('/ Logout Test', () => {
                 id: token.id,
                 role: user.role,
             },
-            config.REFRESH_TOKEN_SECRET!,
+            config.REFRESH_TOKEN_SECRET as string,
             {
                 algorithm: 'HS256',
             }

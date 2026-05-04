@@ -14,7 +14,7 @@ export const isJWT = (token: string | null) => {
         });
         return true;
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return false;
     }
 };
