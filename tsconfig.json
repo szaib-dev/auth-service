@@ -41,10 +41,14 @@
         "moduleDetection": "force",
         "skipLibCheck": true
     },
-     "include": [
-    "src/**/*.ts",
-    "prisma.config.ts",
-    "eslint.config.ts"
-  ],
-    "exclude": ["jest.config.mjs", "jest.config.js", "test", "**/*.spec.ts","dist", "node_modules" ,"logs"]
+    "include": ["src/**/*.ts", "prisma.config.ts", "eslint.config.ts"],
+    "exclude": [
+        "jest.config.mjs",
+        "jest.config.js",
+        "test",
+        "**/*.spec.ts",
+        "dist",
+        "node_modules",
+        "logs"
+    ]
 }

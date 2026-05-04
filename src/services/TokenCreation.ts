@@ -7,13 +7,11 @@ import prisma from '../config/db.js';
 import type { Response } from 'express';
 
 export const generateAccessToken = (payload: JwtPayload, res: Response) => {
-    // locating private key path
-    const privateKeyPath = path.join(process.cwd(), 'certs', 'privateKey.pem');
 
     // getting private key from path
-    const privateKey = fs.readFileSync(privateKeyPath);
+    const privateKey = config.PRIVATE_KEY_SECRET;
     if (!privateKey) {
-        throw new Error('Private Key is For Token Creation');
+        throw new Error('Private Key is missing');
     }
 
     // generating acces token with private key and payload
