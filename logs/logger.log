@@ -1683,3 +1683,249 @@
   level: 'info',
   message: 'Server is running'
 }
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'it looks some fields are missing'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'Please provide data to update member'
+}
+{
+  service: 'auth-service',
+  status: 403,
+  level: 'error',
+  message: "This role don't have permission for this."
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'it looks some fields are missing'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'Please provide data to update member'
+}
+{
+  service: 'auth-service',
+  status: 403,
+  level: 'error',
+  message: "This role don't have permission for this."
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'it looks some fields are missing'
+}
+{
+  service: 'auth-service',
+  status: 400,
+  level: 'error',
+  message: 'Please provide data to update member'
+}
+{
+  service: 'auth-service',
+  status: 403,
+  level: 'error',
+  message: "This role don't have permission for this."
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}
+{
+  service: 'auth-service',
+  port: '5501',
+  level: 'info',
+  message: 'Server is running'
+}

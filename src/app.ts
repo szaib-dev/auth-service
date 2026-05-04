@@ -19,7 +19,7 @@ app.get('/check', async (req, res, next) => {
 
 app.use('/api/user', UserRoutes);
 app.use('/api/tenant', TenantRoutes);
-app.use('/api/member', MemberRoutes)
+app.use('/api/member', MemberRoutes);
 
 // global error handler
 app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev nodemon -L --exec tsx src/server.ts",
+    "build": "tsc",
     "prod": "cross-env NODE_ENV=prod tsx src/server.ts",
     "prepare": "husky",
     "lint:check": "eslint .",
