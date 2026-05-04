@@ -7,7 +7,6 @@ import prisma from '../config/db.js';
 import type { Response } from 'express';
 
 export const generateAccessToken = (payload: JwtPayload, res: Response) => {
-
     // getting private key from path
     const privateKey = config.PRIVATE_KEY_SECRET;
     if (!privateKey) {
