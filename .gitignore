@@ -5,7 +5,6 @@ dist/
 .env.prod
 .env.docker
 private/
-pnpm-lock.yaml
 /src/generated/prisma
 logs/
 logger.log
