@@ -10,7 +10,7 @@ export const createTenant = async (
     try {
         const { name, address } = req.body;
         if (!name || !address) {
-            next(Error('Name or Addres inputs are missing'));
+            next(new Error('Name or Addres inputs are missing'));
             return;
         }
 

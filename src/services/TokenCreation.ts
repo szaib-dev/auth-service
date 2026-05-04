@@ -1,7 +1,5 @@
 import type { JwtPayload } from 'jsonwebtoken';
 import jwt from 'jsonwebtoken';
-import path from 'path';
-import fs from 'fs';
 import config from '../config/index.js';
 import prisma from '../config/db.js';
 import type { Response } from 'express';

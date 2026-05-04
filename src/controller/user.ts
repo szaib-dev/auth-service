@@ -7,7 +7,7 @@ import {
     generateRefreshToken,
 } from '../services/TokenCreation.js';
 import hashMatchPass from '../services/HashMatchPass.js';
-import type { authInterface } from '../types/index.js';
+import type { AuthInterface } from '../types/index.js';
 
 export const createUser = async (
     req: Request,
@@ -98,7 +98,7 @@ export const loginUser = async (
         });
 
         if (!user) {
-            next(Error('Email or Password not valid'));
+            next(new Error('Email or Password not valid'));
             return;
         }
 
@@ -106,7 +106,7 @@ export const loginUser = async (
         const passwordCheck = await hashMatchPass(password, user.password);
 
         if (!passwordCheck) {
-            next(Error('Email or Password not Valid'));
+            next(new Error('Email or Password not Valid'));
             return;
         }
 
@@ -149,7 +149,7 @@ export const VerifyMyself = async (
     next: NextFunction
 ) => {
     try {
-        const req = request as authInterface;
+        const req = request as AuthInterface;
         if (!req.auth.sub) {
             return res.status(403).json('No user found');
         }
@@ -166,7 +166,7 @@ export const refreshTokens = async (
     next: NextFunction
 ) => {
     try {
-        const req = request as authInterface;
+        const req = request as AuthInterface;
         const token = await prisma.refreshToken.findUnique({
             where: {
                 id: req.auth.id!,
@@ -174,7 +174,7 @@ export const refreshTokens = async (
         });
 
         if (!token) {
-            next(Error('Token is not found in db;'));
+            next(new Error('Token is not found in db;'));
             return;
         }
         let user;
@@ -186,12 +186,12 @@ export const refreshTokens = async (
                 },
             });
         } else {
-            next(Error('Token is not valid for this user;'));
+            next(new Error('Token is not valid for this user;'));
             return;
         }
 
         if (!user) {
-            next(Error('User not found with this token '));
+            next(new Error('User not found with this token '));
             return res
                 .status(404)
                 .json({ message: 'user not found with this token' });
@@ -225,7 +225,7 @@ export const logoutUser = async (
     next: NextFunction
 ) => {
     try {
-        const req = request as authInterface;
+        const req = request as AuthInterface;
         // delete token from db
         await prisma.refreshToken.delete({
             where: {
@@ -239,7 +239,7 @@ export const logoutUser = async (
 
         return res.status(200).json({ success: true });
     } catch (error) {
-        next(Error(error as string));
+        next(new Error(error as string));
         return;
     }
 };

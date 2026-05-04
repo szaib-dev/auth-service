@@ -3,7 +3,7 @@ import Config from '../config/index.js';
 import type { NextFunction, Request, Response } from 'express';
 
 export default expressjwt({
-    secret: Config.REFRESH_TOKEN_SECRET!,
+    secret: Config.REFRESH_TOKEN_SECRET as string,
     algorithms: ['HS256'],
     getToken: (req: Request) => {
         const { refreshToken } = req.cookies;

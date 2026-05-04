@@ -13,7 +13,7 @@ const app: Application = express();
 app.use(cookieParser());
 app.use(express.json());
 
-app.get('/check', async (req, res, next) => {
+app.get('/check', async (req, res) => {
     return res.status(200).json('success');
 });
 
@@ -22,7 +22,7 @@ app.use('/api/tenant', TenantRoutes);
 app.use('/api/member', MemberRoutes);
 
 // global error handler
-app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
+app.use((error: HttpError, req: Request, res: Response) => {
     logger.error(error.message, { status: error.statusCode || 500 });
 
     return res.status(error.statusCode || 500).json([

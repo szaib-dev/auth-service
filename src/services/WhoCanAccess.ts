@@ -1,10 +1,10 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { authInterface } from '../types/index.js';
+import type { AuthInterface } from '../types/index.js';
 import createHttpError from 'http-errors';
 
 const WhoCanAccess = (roles: string[]) => {
     return (request: Request, res: Response, next: NextFunction) => {
-        const req = request as authInterface;
+        const req = request as AuthInterface;
 
         if (roles.includes(req.auth.role)) {
             next();

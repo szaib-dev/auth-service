@@ -34,7 +34,7 @@ describe('/POST refresh token', () => {
             sub: user.id,
             id: oldRefreshToken.id,
         };
-        const signature = jwt.sign(payload, config.REFRESH_TOKEN_SECRET!, {
+        const signature = jwt.sign(payload, config.REFRESH_TOKEN_SECRET as string, {
             algorithm: 'HS256',
         });
         const response = await request(app)

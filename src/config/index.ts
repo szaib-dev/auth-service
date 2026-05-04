@@ -12,9 +12,7 @@ const {
     PRIVATE_KEY_SECRET,
 } = process.env;
 
-let Config;
-
-export default Config = {
+export default {
     PORT,
     DATABASE_URL,
     REFRESH_TOKEN_SECRET,
