@@ -19,7 +19,7 @@ jobs:
       NODE_ENV: dev
       DATABASE_URL: postgresql://postgres:${{ secrets.DB_PASS }}@${{ secrets.DB_PROJECT_URL }}:${{ secrets.DB_PROJECT_PORT }}/postgres
       REFRESH_TOKEN_SECRET: ${{ secrets.REFRESH_TOKEN_SECRET }}
-      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      PRIVATE_KEY_SECRET: ${{ secrets.PRIVATE_KEY }}
       JWKS_URI: ${{ secrets.JWKS_URI }}
 
     steps:

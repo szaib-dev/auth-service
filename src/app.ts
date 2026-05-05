@@ -1,5 +1,5 @@
 import express from 'express';
-import type { Application,  Request, Response } from 'express';
+import type { Application, NextFunction, Request, Response } from 'express';
 import logger from './config/logger.js';
 import type { HttpError } from 'http-errors';
 import cookieParser from 'cookie-parser';
@@ -22,7 +22,7 @@ app.use('/api/tenant', TenantRoutes);
 app.use('/api/member', MemberRoutes);
 
 // global error handler
-app.use((error: HttpError, req: Request, res: Response) => {
+app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
     logger.error(error.message, { status: error.statusCode || 500 });
 
     return res.status(error.statusCode || 500).json([

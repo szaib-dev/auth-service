@@ -22,48 +22,53 @@ describe('member routes', () => {
     const createdMemberEmail = 'member-route-created@gmail.com';
 
     let jwk: ReturnType<typeof createJWKSMock>;
+    const cleanupMembers = async () => {
+        await prisma.user.deleteMany({
+            where: {
+                email: {
+                    in: [
+                        adminData.email,
+                        managerData.email,
+                        createdMemberEmail,
+                    ],
+                },
+            },
+        });
+    };
 
-    beforeAll(() => {
+    beforeAll(async () => {
         jwk = createJWKSMock('http://localhost:5501');
+        jwk.start();
+        await cleanupMembers();
     });
 
     beforeEach(async () => {
-        jwk.start();
-
-        await prisma.user.deleteMany({
-            where: {
-                email: {
-                    in: [
-                        adminData.email,
-                        managerData.email,
-                        createdMemberEmail,
-                    ],
-                },
-            },
-        });
+        await cleanupMembers();
     });
 
     afterEach(async () => {
-        jwk.stop();
+        await cleanupMembers();
+    });
 
-        await prisma.user.deleteMany({
-            where: {
-                email: {
-                    in: [
-                        adminData.email,
-                        managerData.email,
-                        createdMemberEmail,
-                    ],
-                },
-            },
-        });
+    afterAll(async () => {
+        await cleanupMembers();
+        jwk.stop();
+        await prisma.$disconnect();
     });
 
     const createUserAndToken = async (role: UserRole = UserRole.ADMIN) => {
         const seedData = role === UserRole.ADMIN ? adminData : managerData;
 
-        const user = await prisma.user.create({
-            data: seedData,
+        const user = await prisma.user.upsert({
+            where: {
+                email: seedData.email,
+            },
+            update: {
+                fullname: seedData.fullname,
+                password: seedData.password,
+                role: seedData.role,
+            },
+            create: seedData,
         });
 
         const accessToken = jwk.token({
@@ -75,8 +80,16 @@ describe('member routes', () => {
     };
 
     const createMemberRecord = async () => {
-        return prisma.user.create({
-            data: {
+        return prisma.user.upsert({
+            where: {
+                email: createdMemberEmail,
+            },
+            update: {
+                fullname: 'Existing Member',
+                password: 'memberpassword',
+                role: UserRole.MANAGER,
+            },
+            create: {
                 fullname: 'Existing Member',
                 email: createdMemberEmail,
                 password: 'memberpassword',
