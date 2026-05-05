@@ -6,26 +6,24 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 
-# Install app dependencies
 RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+RUN pnpm prisma generate
 RUN pnpm build
-
 
 
 #---------------#
 
 
-
-FROM  node:18-slim AS runner
+FROM node:18-slim AS runner
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-ENV NODE_ENV=production 
+ENV NODE_ENV=production
 
 COPY package.json pnpm-lock.yaml ./
 
