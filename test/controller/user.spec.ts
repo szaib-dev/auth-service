@@ -42,13 +42,8 @@ jest.unstable_mockModule('../../src/config/db.js', () => ({
     default: mockPrisma,
 }));
 
-const {
-    VerifyMyself,
-    createUser,
-    loginUser,
-    logoutUser,
-    refreshTokens,
-} = await import('../../src/controller/user');
+const { VerifyMyself, createUser, loginUser, logoutUser, refreshTokens } =
+    await import('../../src/controller/user');
 
 const createResponse = () => {
     const res = {
@@ -155,7 +150,9 @@ describe('user controller', () => {
         mockPrisma.user.findUnique.mockResolvedValue(null);
 
         await loginUser(
-            { body: { email: 'missing@test.com', password: 'password' } } as never,
+            {
+                body: { email: 'missing@test.com', password: 'password' },
+            } as never,
             res as never,
             next
         );
@@ -209,11 +206,7 @@ describe('user controller', () => {
     it('rejects self verification when auth subject is missing', async () => {
         const res = createResponse();
 
-        await VerifyMyself(
-            { auth: { sub: '' } } as never,
-            res as never,
-            next
-        );
+        await VerifyMyself({ auth: { sub: '' } } as never, res as never, next);
 
         expect(res.status).toHaveBeenCalledWith(403);
         expect(res.json).toHaveBeenCalledWith('No user found');
@@ -309,11 +302,7 @@ describe('user controller', () => {
     it('logs a user out and clears cookies', async () => {
         const res = createResponse();
 
-        await logoutUser(
-            { auth: { id: 'rt-1' } } as never,
-            res as never,
-            next
-        );
+        await logoutUser({ auth: { id: 'rt-1' } } as never, res as never, next);
 
         expect(mockPrisma.refreshToken.delete).toHaveBeenCalledWith({
             where: { id: 'rt-1' },

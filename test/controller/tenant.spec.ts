@@ -14,13 +14,8 @@ jest.unstable_mockModule('../../src/config/db.js', () => ({
     default: mockPrisma,
 }));
 
-const {
-    createTenant,
-    deleteTenant,
-    findTenant,
-    tenantsList,
-    updateTenant,
-} = await import('../../src/controller/tenant');
+const { createTenant, deleteTenant, findTenant, tenantsList, updateTenant } =
+    await import('../../src/controller/tenant');
 
 const createResponse = () => {
     const res = {
@@ -118,7 +113,10 @@ describe('tenant controller', () => {
         mockPrisma.resturants.findUnique.mockResolvedValue(null);
 
         await updateTenant(
-            { params: { tenantId: 'missing' }, body: { name: 'Updated' } } as never,
+            {
+                params: { tenantId: 'missing' },
+                body: { name: 'Updated' },
+            } as never,
             res as never,
             next
         );
@@ -148,11 +146,7 @@ describe('tenant controller', () => {
     it('rejects deletes when tenant id is missing', async () => {
         const res = createResponse();
 
-        await deleteTenant(
-            { params: {} } as never,
-            res as never,
-            next
-        );
+        await deleteTenant({ params: {} } as never, res as never, next);
 
         expect(next).toHaveBeenCalledWith(expect.any(Error));
     });
@@ -193,11 +187,7 @@ describe('tenant controller', () => {
     it('rejects tenant lookup when id is missing', async () => {
         const res = createResponse();
 
-        await findTenant(
-            { params: {} } as never,
-            res as never,
-            next
-        );
+        await findTenant({ params: {} } as never, res as never, next);
 
         expect(next).toHaveBeenCalledWith(expect.any(Error));
     });

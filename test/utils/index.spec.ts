@@ -19,11 +19,9 @@ describe('src/utils/isJWT', () => {
     });
 
     it('returns false when decoding throws', () => {
-        const bufferSpy = jest
-            .spyOn(Buffer, 'from')
-            .mockImplementation(() => {
-                throw new Error('decode failed');
-            });
+        const bufferSpy = jest.spyOn(Buffer, 'from').mockImplementation(() => {
+            throw new Error('decode failed');
+        });
         const consoleSpy = jest
             .spyOn(console, 'log')
             .mockImplementation(() => undefined);
