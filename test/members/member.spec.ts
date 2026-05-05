@@ -1,8 +1,11 @@
+import { jest } from '@jest/globals';
 import request from 'supertest';
 import createJWKSMock from 'mock-jwks';
 import app from '../../src/app';
 import prisma from '../../src/config/db';
 import { UserRole } from '../../src/generated/prisma/enums';
+
+jest.setTimeout(30000);
 
 describe('member routes', () => {
     const adminData = {

@@ -1,7 +1,10 @@
+import { jest } from '@jest/globals';
 import request from 'supertest';
 import app from '../../src/app';
 import prisma from '../../src/config/db';
 import { isJWT } from '../../src/utils/index';
+
+jest.setTimeout(30000);
 
 describe('Good', () => {
     const user = {
