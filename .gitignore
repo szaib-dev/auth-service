@@ -12,3 +12,4 @@ logger.log
 .pnpm-store 
 certs/
 logs/
+coverage/
