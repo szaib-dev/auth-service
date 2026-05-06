@@ -12,7 +12,7 @@ const {
     PRIVATE_KEY_SECRET,
     ADMIN_NAME,
     ADMIN_EMAIL,
-    ADMIN_PASS
+    ADMIN_PASS,
 } = process.env;
 
 export default {
@@ -23,5 +23,5 @@ export default {
     PRIVATE_KEY_SECRET,
     ADMIN_NAME,
     ADMIN_EMAIL,
-    ADMIN_PASS
+    ADMIN_PASS,
 };
