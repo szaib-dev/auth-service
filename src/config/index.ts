@@ -10,6 +10,9 @@ const {
     REFRESH_TOKEN_SECRET,
     JWKS_URI,
     PRIVATE_KEY_SECRET,
+    ADMIN_NAME,
+    ADMIN_EMAIL,
+    ADMIN_PASS
 } = process.env;
 
 export default {
@@ -18,4 +21,7 @@ export default {
     REFRESH_TOKEN_SECRET,
     JWKS_URI,
     PRIVATE_KEY_SECRET,
+    ADMIN_NAME,
+    ADMIN_EMAIL,
+    ADMIN_PASS
 };
