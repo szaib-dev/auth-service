@@ -8,6 +8,7 @@ import {
 } from '../services/TokenCreation.js';
 import hashMatchPass from '../services/HashMatchPass.js';
 import type { AuthInterface } from '../types/index.js';
+import createHttpError from 'http-errors';
 
 export const createUser = async (
     req: Request,
@@ -30,6 +31,17 @@ export const createUser = async (
             return res.status(402).json({
                 message: 'Please add all fields!',
             });
+        }
+
+        const isUserExist = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        })
+
+        if(isUserExist){
+            next(createHttpError(402, 'It looks user already exist'))
+            return;
         }
 
         // hashing the password
@@ -98,7 +110,7 @@ export const loginUser = async (
         });
 
         if (!user) {
-            next(new Error('Email or Password not valid'));
+            next(createHttpError(400,'Email or Password not valid'));
             return;
         }
 
@@ -106,7 +118,7 @@ export const loginUser = async (
         const passwordCheck = await hashMatchPass(password, user.password);
 
         if (!passwordCheck) {
-            next(new Error('Email or Password not Valid'));
+            next(createHttpError(400,'Email or Password not Valid'));
             return;
         }
 

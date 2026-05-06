@@ -8,27 +8,23 @@ const BootStrapAdmin = async () => {
     const adminEmail = config.ADMIN_EMAIL;
     const adminPassword = config.ADMIN_PASS;
 
-    if (!adminEmail || !adminPassword) {
-        throw new Error('Admin Startup Credentials Missing');
+    if (!adminName || !adminEmail || !adminPassword) {
+        throw new Error('Admin startup credentials are missing');
     }
-
-    const admin = await prisma.user.findUnique({
-        where: {
-            email: adminEmail,
-        },
-    });
-
-    if (admin) {
-        return;
-    }
-
-    if (!adminName) {
-        throw new Error('Cannot create admin credentials are missing');
-    }
-
-    const hashedPassword = await bcrypt.hash(adminPassword, 12);
 
     try {
+        const admin = await prisma.user.findUnique({
+            where: {
+                email: adminEmail,
+            },
+        });
+
+        if (admin) {
+            return;
+        }
+
+        const hashedPassword = await bcrypt.hash(adminPassword, 12);
+
         await prisma.user.create({
             data: {
                 fullname: adminName,
@@ -38,7 +34,8 @@ const BootStrapAdmin = async () => {
             },
         });
     } catch (error) {
-        throw new Error('Failed to create admin user', { cause: error });
+        console.error('Bootstrap admin failed:', error);
+        throw error;
     }
 };
 

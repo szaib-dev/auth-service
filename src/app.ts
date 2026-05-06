@@ -3,6 +3,7 @@ import type { Application, NextFunction, Request, Response } from 'express';
 import logger from './config/logger.js';
 import type { HttpError } from 'http-errors';
 import cookieParser from 'cookie-parser';
+import cors from "cors"
 
 // import routes
 import UserRoutes from './routes/user.routes.js';
@@ -10,7 +11,11 @@ import TenantRoutes from './routes/tenant.routes.js';
 import MemberRoutes from './routes/member.routes.js';
 
 const app: Application = express();
-app.use(cookieParser());
+app.use(cors({
+    origin: ['http://localhost:5173'],
+    credentials: true
+}))
+app.use(cookieParser()); 
 app.use(express.json());
 
 app.get('/check', async (req, res) => {
