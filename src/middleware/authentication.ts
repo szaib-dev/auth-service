@@ -4,16 +4,29 @@ import jwksClient from 'jwks-rsa';
 import config from '../config/index.js';
 import type { Request, Response, NextFunction } from 'express';
 
+const JWKS_URI = config.JWKS_URI;
+
+if (!JWKS_URI) {
+    throw new Error('JWKS URI is missing');
+}
+
 export default expressjwt({
     secret: jwksClient.expressJwtSecret({
         cache: true,
-        jwksUri: config.JWKS_URI!,
+        rateLimit: true,
+        jwksUri: JWKS_URI,
     }) as GetVerificationKey,
+
     algorithms: ['RS256'],
+
     getToken: (req: Request) => {
-        const token = req.headers.authorization?.split(' ')[1];
-        if (token) {
-            return token;
+        const authHeader = req.headers.authorization;
+        const bearerToken = authHeader?.startsWith('Bearer ')
+            ? authHeader.split(' ')[1]
+            : undefined;
+
+        if (bearerToken && bearerToken !== 'undefined' && bearerToken !== 'null') {
+            return bearerToken;
         }
 
         const { accessToken } = req.cookies;

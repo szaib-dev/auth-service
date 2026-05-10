@@ -17,6 +17,8 @@ model User {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @default(now()) @updatedAt
   RefreshToken RefreshToken?
+  tenant       Resturants?   @relation(fields: [tenantId], references: [id])
+
 }
 
 enum UserRole {
@@ -36,6 +38,7 @@ model RefreshToken {
 model Resturants {
   id        String   @id @default(cuid())
   name      String 
-  address   String  
+  address   String 
+  users     User[] 
 }
 

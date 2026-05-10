@@ -7,6 +7,7 @@
     "dev": "cross-env NODE_ENV=dev nodemon -L --exec tsx src/server.ts",
     "build": "tsc",
     "prod": "cross-env NODE_ENV=prod tsx src/server.ts",
+    "jwks:generate": "node scripts/generate-jwks.mjs",
     "prepare": "husky",
     "lint:check": "eslint .",
     "lint:fix": "eslint . --fix",

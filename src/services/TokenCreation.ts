@@ -15,7 +15,7 @@ export const generateAccessToken = (payload: JwtPayload, res: Response) => {
     const accessToken = jwt.sign(payload, privateKey, {
         algorithm: 'RS256',
         issuer: 'auth-service',
-        expiresIn: '1h',
+        expiresIn: '1m',
     });
 
     res.cookie('accessToken', accessToken, {

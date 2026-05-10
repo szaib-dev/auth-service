@@ -35,12 +35,12 @@ export const createUser = async (
 
         const isUserExist = await prisma.user.findUnique({
             where: {
-                email: email
-            }
-        })
+                email: email,
+            },
+        });
 
-        if(isUserExist){
-            next(createHttpError(402, 'It looks user already exist'))
+        if (isUserExist) {
+            next(createHttpError(402, 'It looks user already exist'));
             return;
         }
 
@@ -110,7 +110,7 @@ export const loginUser = async (
         });
 
         if (!user) {
-            next(createHttpError(400,'Email or Password not valid'));
+            next(createHttpError(400, 'Email or Password not valid'));
             return;
         }
 
@@ -118,7 +118,7 @@ export const loginUser = async (
         const passwordCheck = await hashMatchPass(password, user.password);
 
         if (!passwordCheck) {
-            next(createHttpError(400,'Email or Password not Valid'));
+            next(createHttpError(400, 'Email or Password not Valid'));
             return;
         }
 
@@ -165,7 +165,27 @@ export const VerifyMyself = async (
         if (!req.auth.sub) {
             return res.status(403).json('No user found');
         }
-        return res.status(200).json({ id: req.auth.sub });
+
+        const user = await prisma.user.findUnique({
+            where: {
+                id: req.auth.sub,
+            },
+            select: {
+                email: true,
+                fullname: true,
+                role: true,
+                id: true,
+                tenantId: false,
+                tenant: {
+                    select: {
+                        id: true,
+                        name: true,
+                        address: true,
+                    },
+                },
+            },
+        });
+        return res.status(200).json({ id: req.auth.sub, user });
     } catch (error) {
         next(new Error(error as string));
         return;
@@ -179,6 +199,7 @@ export const refreshTokens = async (
 ) => {
     try {
         const req = request as AuthInterface;
+
         const token = await prisma.refreshToken.findUnique({
             where: {
                 id: req.auth.id!,

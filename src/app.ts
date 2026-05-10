@@ -15,6 +15,9 @@ app.use(cors({
     origin: ['http://localhost:5173'],
     credentials: true
 }))
+app.use(express.static('public',{
+    dotfiles: 'allow'
+}))
 app.use(cookieParser()); 
 app.use(express.json());
 
@@ -30,10 +33,11 @@ app.use('/api/member', MemberRoutes);
 app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
     logger.error(error.message, { status: error.statusCode || 500 });
 
-    return res.status(error.statusCode || 500).json([
+    return res.status(error.statusCode || error.status || 500).json([
         {
-            err: error.message,
-            errStatus: error.statusCode || 500,
+            error_message: error.message,
+            error: error,
+            errStatus: error.statusCode || error.status || 500,
             location: '',
             path: '',
         },

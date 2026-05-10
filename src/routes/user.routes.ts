@@ -18,7 +18,7 @@ const route: Router = express.Router();
 route.post('/register', RegisterUserValidaton, createUser);
 route.post('/login', LoginUserValidaton, loginUser);
 route.get('/self', authentication, VerifyMyself);
-route.post('/refresh-tokens', tokenValidation, refreshTokens);
+route.get('/refresh-tokens', tokenValidation, refreshTokens);
 route.post('/logout', authentication, tokenValidationLogout, logoutUser);
 
 export default route;
