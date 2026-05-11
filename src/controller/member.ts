@@ -10,9 +10,9 @@ export const createMember = async (
     next: NextFunction
 ) => {
     try {
-        const { fullname, email, password } = req.body;
+        const { fullname, email, password, role, tenantId } = req.body;
 
-        if (!fullname || !email || !password) {
+        if (!fullname || !email || !password || !role || !tenantId) {
             next(createHttpError(400, 'it looks some fields are missing'));
             return;
         }
@@ -24,7 +24,8 @@ export const createMember = async (
                 fullname,
                 email,
                 password: hashedpassword,
-                role: UserRole.MANAGER,
+                role,
+                tenantId
             },
 
             select: {
@@ -184,7 +185,12 @@ export const listOfMembers = async (
 ) => {
     try {
         const members = await prisma.user.findMany({
-            select: { email: true, fullname: true, role: true, id: true },
+            select: { email: true, fullname: true, role: true, id: true, tenant: {
+                select: {
+                    id: true,
+                    name: true,
+                }
+            } },
         });
 
         if (members.length === 0) {

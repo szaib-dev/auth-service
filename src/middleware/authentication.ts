@@ -25,7 +25,11 @@ export default expressjwt({
             ? authHeader.split(' ')[1]
             : undefined;
 
-        if (bearerToken && bearerToken !== 'undefined' && bearerToken !== 'null') {
+        if (
+            bearerToken &&
+            bearerToken !== 'undefined' &&
+            bearerToken !== 'null'
+        ) {
             return bearerToken;
         }
 
